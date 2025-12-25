@@ -1,0 +1,21 @@
+import { useState, useEffect } from "react";
+
+function App() {
+  const [time, setTime] = useState(60);
+
+  useEffect(()=>{
+    const t = setInterval(()=>setTime(prev=>prev-1),1000);
+    return ()=>clearInterval(t);
+  },[]);
+
+  if(time===0) alert("Time Over");
+
+  return (
+    <div>
+      <h3>⏱ Time Left: {time}</h3>
+      <p>What is g?</p>
+    </div>
+  );
+}
+
+export default App;
